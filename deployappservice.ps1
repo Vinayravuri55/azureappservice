@@ -1,0 +1,29 @@
+$serviceprincipalAppId = ""
+$sppassword = ""
+$tenantId=""
+$subscription=""
+$resourcegroup = ""
+
+az login --service-principal -u $serviceprincipalAppId --password $sppassword --tenant $tenantId
+
+az account set --subscription $subscription
+
+az appservice plan create -n hondsalesasp -g $resourcegroup -l EastUS --sku B1
+
+az appservice plan list --query "[].{Name: name, ResourceGroup: resourceGroup, Location: location, State:state}" --output table
+
+az webapp create -n hondaas -g $resourcegroup --plan hondsalesasp --runtime "ASPNET:V4.8"
+
+# az webapp delete --name hondaas -g $resourcegroup
+az webapp list --query "[].{Name:name, ResourceGroup: resourceGroup, Location: location, State:state}" --output table
+
+$output az webapp list -g $resourcegroup -o json --query '[].{Name: name}' --output tsv
+
+#Loop thru the variables and stop the instances one by one
+foreach($item in $output){
+    #start the app instances
+    az webapp start --name $item --resource-group $resourcegroup
+}
+
+az webapp list --query "[].{Name:name, ResourceGroup: resourceGroup, Location: location, State:state}" --output table
+

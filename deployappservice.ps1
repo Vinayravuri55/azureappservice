@@ -1,8 +1,11 @@
-$serviceprincipalAppId = ""
-$sppassword = ""
-$tenantId=""
-$subscription=""
-$resourcegroup = ""
+param (
+    [string]$serviceprincipalAppId
+    [string]$sppassword
+    [string]$tenantId
+    [string]$subscription
+)
+
+$resourcegroup = "813-c4ec6a02-hands-on-with-terraform-on-azure"
 
 az login --service-principal -u $serviceprincipalAppId --password $sppassword --tenant $tenantId
 

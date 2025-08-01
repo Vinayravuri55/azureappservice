@@ -1,7 +1,7 @@
 param (
-    [string]$serviceprincipalAppId
-    [string]$sppassword
-    [string]$tenantId
+    [string]$serviceprincipalAppId,
+    [string]$sppassword,
+    [string]$tenantId,
     [string]$subscription
 )
 

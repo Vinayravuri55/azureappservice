@@ -22,7 +22,7 @@ jobs:
           shell: pwsh
           run: |
             .\deployappservice.ps1 `
-              -serviceprincipalAppId "${{ secrets.clientId }}" `
-              -sppassword "${{ secrets.clientSecret }}" `
-              -tenantId "${{ secrets.tenantId }}"
+              -serviceprincipalAppId "${{ secrets.AZURE_CREDENTIALS.clientId }}" `
+              -sppassword "${{ secrets.AZURE_CREDENTIALS.clientSecret }}" `
+              -tenantId "${{ secrets.AZURE_CREDENTIALS.tenantId }}"
 

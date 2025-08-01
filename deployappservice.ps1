@@ -29,4 +29,3 @@ foreach($item in $output){
 }
 
 az webapp list --query "[].{Name:name, ResourceGroup: resourceGroup, Location: location, State:state}" --output table
-

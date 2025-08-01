@@ -21,5 +21,8 @@ jobs:
         - name: Run Azure CLI ps1 script
           shell: pwsh
           run: |
-            .\deployappservice.ps1
+            .\deployappservice.ps1 `
+              -serviceprincipalAppId "${{ secrets.clientId }}" `
+              -sppassword "${{ secrets.clientSecret }}"
+              -tenantId "${{ secrets.tenantId }}"
 

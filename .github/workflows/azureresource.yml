@@ -23,6 +23,6 @@ jobs:
           run: |
             .\deployappservice.ps1 `
               -serviceprincipalAppId "${{ secrets.clientId }}" `
-              -sppassword "${{ secrets.clientSecret }}"
+              -sppassword "${{ secrets.clientSecret }}" `
               -tenantId "${{ secrets.tenantId }}"
 

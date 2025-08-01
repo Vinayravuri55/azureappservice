@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - 'deployappservice.ps1'
+      - 'stopappservice.ps1'
   workflow_dispatch:
 
 name: AzureCLIStop
@@ -23,7 +23,7 @@ jobs:
         - name: Run Azure CLI ps1 script
           shell: pwsh
           run: |
-            .\deployappservice.ps1 `
+            .\stopappservice.ps1 `
               -serviceprincipalAppId "${{ secrets.AZURE_CREDENTIALS.clientId }}" `
               -sppassword "${{ secrets.AZURE_CREDENTIALS.clientSecret }}" `
               -tenantId "${{ secrets.AZURE_CREDENTIALS.tenantId }}"
